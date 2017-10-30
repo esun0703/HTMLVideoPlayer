@@ -37,6 +37,11 @@
 			video.currentTime += parseFloat(amountToSkip);
 		}
 	// 4. Range Functionality with Volume and Playback Speed
+		function handleRange(){
+			console.log(this);
+			console.log(this.value);
+			video[this.name] = this.value;
+		}
 
 	// 5. Progress Bar
 		// need to determine the percentage of the video that is played compared to duration
@@ -57,3 +62,7 @@
 
 
 	skipButtons.forEach(button => button.addEventListener('click', skip));
+
+	// event handlers for range changes;
+	ranges.forEach(range => range.addEventListener('click', handleRange));
+	ranges.forEach(range => range.addEventListener('mousemove', handleRange));
