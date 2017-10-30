@@ -54,6 +54,12 @@
 		}
 	// 6. Progress Bar with Scrub
 		let mousedown = false;
+		function scrub(e){
+			// grabs width of progressbar over total progress bar width to the video duration 
+			// console.log(e)
+			const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+			video.currentTime = scrubTime;
+		}
 
 
 // Event Handlers
@@ -74,4 +80,9 @@
 	// event handlers for range changes;
 	ranges.forEach(range => range.addEventListener('click', handleRange));
 	ranges.forEach(range => range.addEventListener('mousemove', handleRange));
+
+	progress.addEventListener('click', scrub);
+	progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+	progress.addEventListener('mousedown', () => mousedown = true);
+	progress.addEventListener('mouseup', () => mousedown = false)
 
