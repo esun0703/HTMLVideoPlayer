@@ -19,6 +19,11 @@
 			video[method]();
 		}
 	// 2. Updating Play Icon
+		function updateIcon(){
+			const icon = video.paused ? '►' : '❚ ❚';
+			toggle.textContent = icon;
+			console.log(icon);
+		}
 	// 3. Adding Skip Functionality
 	// 4. Range Functionality with Volume and Playback Speed
 	// 5. Progress Bar
@@ -28,6 +33,10 @@
 // Event Handlers
 	// Play during click
 	video.addEventListener('click', togglePlay);
+	// update icon
+	video.addEventListener('click', updateIcon);
 
 	// play on icon click
 	toggle.addEventListener('click', togglePlay);
+	// update icon
+	toggle.addEventListener('click', updateIcon);
