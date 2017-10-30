@@ -9,6 +9,15 @@
 
 // Build Functions
 	// 1. Intializing Play Function
+		function togglePlay(){
+			// if(video.paused){
+			// 	video.play();
+			// } else {
+			// 	video.pause();
+			// }
+			const method = video.paused ? 'play' : 'pause';
+			video[method]();
+		}
 	// 2. Updating Play Icon
 	// 3. Adding Skip Functionality
 	// 4. Range Functionality with Volume and Playback Speed
@@ -17,3 +26,8 @@
 
 
 // Event Handlers
+	// Play during click
+	video.addEventListener('click', togglePlay);
+
+	// play on icon click
+	toggle.addEventListener('click', togglePlay);
