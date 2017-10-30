@@ -25,7 +25,7 @@
 			// if video is paused then change the icon to play else pause icon
 			const icon = video.paused ? '►' : '❚ ❚';
 			// change toggle icon to whatever icon is set to.
-			toggle.textContent = icon;
+			toggle.textContent = icon; //******** Review Later
 			// console.log(icon);
 		}
 	// 3. Adding Skip Functionality
@@ -38,13 +38,20 @@
 		}
 	// 4. Range Functionality with Volume and Playback Speed
 		function handleRange(){
-			console.log(this);
-			console.log(this.value);
-			video[this.name] = this.value;
+			// console.log(this);
+			// console.log(this.value);
+			video[this.name] = this.value; //******** Review Later
 		}
 
 	// 5. Progress Bar
-		// need to determine the percentage of the video that is played compared to duration
+		function handleProgress(){
+			// need to determine the percentage of the video that is played compared to duration
+			const percentage = (video.currentTime / video.duration) * 100;//******** Review Later
+			// console.log(percentage);
+			// updates progress bar to be the percentage relative to the percentage playing.
+			// console.log(progressBar.style.flexBasis;
+			progressBar.style.flexBasis = `${percentage}%`; //******** Review Later
+		}
 	// 6. Progress Bar with Scrub
 		let mousedown = false;
 
@@ -54,6 +61,7 @@
 	video.addEventListener('click', togglePlay);
 	// update icon
 	video.addEventListener('click', updateIcon);
+	video.addEventListener('timeupdate', handleProgress);
 
 	// play on icon click
 	toggle.addEventListener('click', togglePlay);
@@ -66,3 +74,4 @@
 	// event handlers for range changes;
 	ranges.forEach(range => range.addEventListener('click', handleRange));
 	ranges.forEach(range => range.addEventListener('mousemove', handleRange));
+
